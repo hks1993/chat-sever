@@ -56,7 +56,7 @@ DateListSchema.set("toObject", {
 });
 var ChatModel = mongoose.model("day-wise-chat", DayChatSchema);
 var DateListModel = mongoose.model("dates-list", DateListSchema);
-
+console.log("database models populated", ChatModel, DateListModel);
 module.exports = {
   ChatModel: ChatModel,
   DateListModel: DateListModel,

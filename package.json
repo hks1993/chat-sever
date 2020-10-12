@@ -7,8 +7,38 @@
   "license": "no",
   "private": true,
   "scripts": {
-    "start": "node index.js --watch server"
+    "start": "node index.js --watch server",
+
+    "test": "pm2 show 0",
+    "precommit": "cd client && yarn precommit",
+
+    "start:server": "nodemon start.js --watch server",
+    "start:prod-server": "pm2 start server_build/piktorsense --name senze",
+    "start:sit-server": "npm run server --mongodburi=mongodb://elango:m00nlite@ds237922.mlab.com:37922/cata_test",
+    "start:widgetlibrary": "node server/widgetlibrary.js",
+    "build:server": "pkg . --out-path server_build -t node8-macos-x64",
+    "build:winserver": "pkg . --out-path server_build -t node8-macos-x64",
+    "build:prod-server": "pkg . --out-path server_build -t node8-linux-x64 ",
+    "build:widgetlibrary": "pkg server/widgetlibrary.js --out-path server_build/widgetlibrary -t node8-macos-x64",
+    "build:initdata": "pkg server/initdata.js --out-path server_build -t node8-macos-x64",
+    "initdata": "cd server && node initdata.js",
+    "postinstall": "cd client && yarn install",
+    "postbuild:server": "cp -R ./node_modules/puppeteer/.local-chromium ./server_build/chromium && cp -R ./client/build ./server_build/clientbuild",
+    "postbuild:prod-server": "cp -R ./node_modules/puppeteer/.local-chromium ./server_build/chromium && cp -R ./client/build ./server_build/clientbuild"
+  
   },
+  "pkg": {
+    "scripts": "node_modules/puppeteer/lib/*.js",
+    "assets": [
+      "server/src/reports/eval1.js",
+      "node_modules/unicode-properties/data.trie",
+      "node_modules/fontkit/data.trie",
+      "node_modules/linebreak/src/classes.trie",
+      "node_modules/pdfkit/node_modules/linebreak/src/classes.trie",
+      "node_modules/pdfkit/js/data/Helvetica.afm"
+    ]
+  },
+  "bin": "start.js",
   "dependencies": {
     "mongodb": "^2.2.30",
     "mongoose": "^4.13.7",

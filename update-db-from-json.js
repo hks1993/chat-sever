@@ -10,7 +10,7 @@ async function updateChatsScript(chat) {
       return MongoFunctions.UpdateChat(chatModelObject);
     });
     const dateBaseUpdate = await Promise.all(promiseArray);
-    console.log("success");
+    console.log("success -database updated");
   } catch (err) {
     console.error("failed", err);
   }
@@ -30,5 +30,5 @@ async function updateDatesScript(chat) {
     console.error("failed", err);
   }
 }
-// updateChatsScript(chatJson);
+updateChatsScript(chatJson);
 updateDatesScript(chatJson);
