@@ -18,10 +18,12 @@ async function updateChatsScript(chat) {
 async function updateDatesScript(chat) {
   console.log("script started");
   try {
+    console.log("step 1  ");
     const chatModelObject = {
       id: "date-list-main",
       datesArray: Object.keys(chat) || [],
     };
+    console.log("step 2");
     const result = await MongoFunctions.UpdateDatesArray(chatModelObject);
     console.log("success", result);
   } catch (err) {
