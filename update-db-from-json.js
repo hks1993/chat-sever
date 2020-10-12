@@ -21,8 +21,8 @@ async function updateDatesScript(chat) {
       id: "date-list-main",
       datesArray: Object.keys(chat) || [],
     };
-    await MongoFunctions.UpdateDatesArray(chatModelObject);
-    console.log("success");
+    const result = await MongoFunctions.UpdateDatesArray(chatModelObject);
+    console.log("success", result);
   } catch (err) {
     console.error("failed", err);
   }
