@@ -22,7 +22,7 @@ app.use(mongoSanitize());
 app.use(compression());
 app.use(
   cors({
-    // origin: 'http://example.com',
+    origin: "https://artist-wanderer-chat-box.firebaseapp.com",
     optionsSuccessStatus: 200,
     exposedHeaders: ["Saved-Image-Type"],
   })
