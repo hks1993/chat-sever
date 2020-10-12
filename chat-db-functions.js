@@ -12,6 +12,7 @@ const UpdateChat = function UpdateChat(data) {
 };
 const UpdateDatesArray = function (data) {
   // find most recent one and update or create new one
+  console.log("connecting to DB");
   return DateListModel.findOneAndUpdate({ id: data.id }, data, {
     upsert: true,
     new: true,
