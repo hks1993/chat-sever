@@ -16,6 +16,7 @@ async function updateChatsScript(chat) {
   }
 }
 async function updateDatesScript(chat) {
+  console.log("script started");
   try {
     const chatModelObject = {
       id: "date-list-main",
